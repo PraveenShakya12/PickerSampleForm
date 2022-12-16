@@ -10,9 +10,13 @@ import { UserDepartmentNiches } from '../../redux/action/action';
 const DepartmentPicker = ({navigation}) => {
   const dispatch = useDispatch();
 
+  const GoToBackScreen = () => {
+    alert('goback')
+  }
+
   return (
     <SafeAreaView>
-      <HeaderBar />
+      <HeaderBar GoToBackScreen={GoToBackScreen}/>
       <Message message={'Great! What department do you work in ?'} />
 
       <TouchableOpacity

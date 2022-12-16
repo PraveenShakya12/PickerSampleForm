@@ -13,7 +13,7 @@ const DevelopmentPicker = ({navigation}) => {
   return (
     <SafeAreaView>
       <HeaderBar />
-      <Message message={'Wellcome! What are you looking for ?'} />
+      <Message message={'Wellcome! 😊 What are you looking for ?'} />
 
       <TouchableOpacity
         style={styles.container}

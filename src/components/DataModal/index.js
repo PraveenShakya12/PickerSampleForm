@@ -2,9 +2,21 @@ import React from 'react';
 import {Text, View, Modal, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
-import {IsModalOpen} from '../../redux/action/action';
+import {
+  UserDevelopmentNiches,
+  UserDepartmentNiches,
+  UserEmail,
+  UserPhone,
+  UserFirstName,
+  UserLastName,
+  UserCompanyName,
+  UserJobTitle,
+  IsModalOpen
+} from '../../redux/action/action';
 
-const DataModal = () => {
+const DataModal = (props) => {
+  const ResetScreens = props.ResetScreens;
+
   const dispatch = useDispatch();
   const modalOpen = useSelector(state => state.user.modalOpen);
   const {
@@ -17,6 +29,18 @@ const DataModal = () => {
     CompanyName,
     jobTitle,
   } = useSelector(state => state.user);
+
+  const ResetData = () => {
+    dispatch(UserDevelopmentNiches(''));
+    dispatch(UserDepartmentNiches(''));
+    dispatch(UserEmail(''));
+    dispatch(UserPhone(''));
+    dispatch(UserFirstName(''));
+    dispatch(UserLastName(''));
+    dispatch(UserCompanyName(''));
+    dispatch(UserJobTitle(''));
+    dispatch(IsModalOpen(!modalOpen));
+  };
 
   return (
     <Modal visible={modalOpen}>
@@ -44,8 +68,9 @@ const DataModal = () => {
 
           <TouchableOpacity
             onPress={() => {
-              dispatch(IsModalOpen(!modalOpen));
-            }}>
+              ResetData();
+              ResetScreens();
+              }}>
             <Text style={styles.closeBtn}>CLOSE</Text>
           </TouchableOpacity>
         </View>

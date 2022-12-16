@@ -10,10 +10,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {IsModalOpen} from '../../redux/action/action';
 import {UserCompanyName, UserJobTitle} from '../../redux/action/action';
 
-const ClearData = () => {
-  alert('helloo');
-};
-
 const UserProfession = ({navigation}) => {
   const dispatch = useDispatch();
   const modalOpen = useSelector(state => state.user.modalOpen);
@@ -25,10 +21,14 @@ const UserProfession = ({navigation}) => {
     }
   }
 
+  const ResetScreens = () => {
+    // navigation.navigate('Development');
+  }
+
   return (
     <SafeAreaView>
       <HeaderBar />
-      <Message message={'Thanks! Just a few more details and we are done!'} />
+      <Message message={'Thanks!😊 Just a few more details and we are done!'} />
       <TextFields
         placeholder={'Company Name'}
         onChangeText={val => {
@@ -48,7 +48,7 @@ const UserProfession = ({navigation}) => {
         <SubmitBtn name={'REQUEST DEMO'} />
       </TouchableOpacity>
 
-      <DataModal removeData={ClearData} />
+      <DataModal ResetScreens={ResetScreens} />
 
       <Button
         title={'Goto Front'}
