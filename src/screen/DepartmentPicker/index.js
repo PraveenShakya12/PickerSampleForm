@@ -1,51 +1,45 @@
 import React from 'react';
-import {SafeAreaView, TouchableOpacity} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import HeaderBar from '../../components/HeaderBar';
-import styles from './styles';
 import Message from '../../components/Message';
 import SubmitBtn from '../../components/SubmitBtn';
 import {useDispatch} from 'react-redux';
-import { UserDepartmentNiches } from '../../redux/action/action';
+import {UserDepartmentNiches} from '../../redux/action/action';
+import strings from '../../strings';
 
 const DepartmentPicker = ({navigation}) => {
   const dispatch = useDispatch();
 
   const GoToBackScreen = () => {
-    alert('goback')
-  }
+    navigation.goBack();
+  };
 
   return (
     <SafeAreaView>
-      <HeaderBar GoToBackScreen={GoToBackScreen}/>
-      <Message message={'Great! What department do you work in ?'} />
+      <HeaderBar GoToBackScreen={GoToBackScreen} screen={'Department'} />
+      <Message message={strings.heading2} />
 
-      <TouchableOpacity
-        style={styles.container}
+      <SubmitBtn
+        name={'MARKETING'}
         onPress={() => {
-          dispatch(UserDepartmentNiches('Marketing'))
+          dispatch(UserDepartmentNiches('Marketing'));
           navigation.navigate('UserAuth');
-        }}>
-        <SubmitBtn name={'MARKETING'} />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.container}
+        }}
+      />
+      <SubmitBtn
+        name={'SALES'}
         onPress={() => {
-          dispatch(UserDepartmentNiches('Sales'))
+          dispatch(UserDepartmentNiches('Sales'));
           navigation.navigate('UserAuth');
-        }}>
-        <SubmitBtn name={'SALES'} />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.container}
+        }}
+      />
+      <SubmitBtn
+        name={'DEVELOPMENT'}
         onPress={() => {
-          dispatch(UserDepartmentNiches('Marketing'))
+          dispatch(UserDepartmentNiches('Marketing'));
           navigation.navigate('UserAuth');
-        }}>
-        <SubmitBtn name={'DEVELOPMENT'} />
-      </TouchableOpacity>
-
+        }}
+      />
     </SafeAreaView>
   );
 };

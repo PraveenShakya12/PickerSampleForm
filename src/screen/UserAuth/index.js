@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import {SafeAreaView, TouchableOpacity} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import HeaderBar from '../../components/HeaderBar';
 import Message from '../../components/Message';
 import SubmitBtn from '../../components/SubmitBtn';
 import TextFields from '../../components/TextFields';
-import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {UserEmail, UserPhone} from '../../redux/action/action';
-import { ValidateEmail, ValidateNumber } from '../../utils';
+import {ValidateEmail, ValidateNumber} from '../../utils';
+import strings from '../../strings';
 
 const AuthScreen = ({navigation}) => {
   const [isValidEmail, setIsValidEmail] = useState('');
@@ -15,6 +15,10 @@ const AuthScreen = ({navigation}) => {
 
   const dispatch = useDispatch();
   const {Email, Phone} = useSelector(state => state.user);
+
+  const GoToBackScreen = () => {
+    navigation.goBack();
+  };
 
   const IsEmailValid = () => {
     ValidateEmail().test(Email)
@@ -29,28 +33,25 @@ const AuthScreen = ({navigation}) => {
   };
 
   const CheckValidation = () => {
-    if(Email === '' && Phone === ''){
+    if (Email === '' && Phone === '') {
       setIsValidEmail('Enter valid Email');
       setIsValidNumber('Enter valid Password');
     } else {
-      if(isValidEmail === '' && isValidNumber === ''){
+      if (isValidEmail === '' && isValidNumber === '') {
         navigation.navigate('UserDetails');
       }
     }
-  }
+  };
 
   return (
     <SafeAreaView>
-      <HeaderBar />
-      <Message
-        message={
-          'What is the email and phone number that we can reach you the best?'
-        }
-      />
+      <HeaderBar GoToBackScreen={GoToBackScreen} screen={'UserAuth'} />
+      <Message message={strings.heading3} />
 
       <TextFields
         placeholder={'Enter Email'}
         warrning={isValidEmail}
+        defaultValue={Email}
         onChangeText={val => {
           dispatch(UserEmail(val));
           IsEmailValid();
@@ -59,17 +60,18 @@ const AuthScreen = ({navigation}) => {
       <TextFields
         placeholder={'Enter Phone No.'}
         warrning={isValidNumber}
+        defaultValue={Phone}
         onChangeText={val => {
           dispatch(UserPhone(val));
           IsNumberValid();
         }}
       />
-
-      <TouchableOpacity
-        style={styles.container}
-        onPress={() => {CheckValidation()}}>
-        <SubmitBtn name={'NEXT'} />
-      </TouchableOpacity>
+      <SubmitBtn
+        name={'NEXT'}
+        onPress={() => {
+          CheckValidation();
+        }}
+      />
     </SafeAreaView>
   );
 };

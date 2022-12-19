@@ -1,46 +1,52 @@
 import React from 'react';
-import {SafeAreaView, TouchableOpacity} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import HeaderBar from '../../components/HeaderBar';
 import Message from '../../components/Message';
 import SubmitBtn from '../../components/SubmitBtn';
 import TextFields from '../../components/TextFields';
-import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {UserFirstName, UserLastName} from '../../redux/action/action';
+import strings from '../../strings';
 
 const UserDetails = ({navigation}) => {
   const dispatch = useDispatch();
   const {FirstName, LastName} = useSelector(state => state.user);
 
+  const GoToBackScreen = () => {
+    navigation.goBack();
+  };
+
   const CheckValidation = () => {
-    if(FirstName !== '' && LastName !== ''){
+    if (FirstName !== '' && LastName !== '') {
       navigation.navigate('UserProfession');
     }
-  }
+  };
 
   return (
     <SafeAreaView>
-      <HeaderBar />
-      <Message message={'Could you tell us a bit more about yourself?'} />
+      <HeaderBar GoToBackScreen={GoToBackScreen} screen={'UserDetails'} />
+      <Message message={strings.heading4} />
 
       <TextFields
         placeholder={'First Name'}
+        defaultValue={FirstName}
         onChangeText={val => {
           dispatch(UserFirstName(val));
         }}
       />
       <TextFields
         placeholder={'Last Name'}
+        defaultValue={LastName}
         onChangeText={val => {
           dispatch(UserLastName(val));
         }}
       />
-
-      <TouchableOpacity
-        style={styles.container}
-        onPress={() => {CheckValidation()}}>
-        <SubmitBtn name={'NEXT'} />
-      </TouchableOpacity>
+      <SubmitBtn
+        name={'NEXT'}
+        onPress={() => {
+          CheckValidation();
+        }}
+      />
     </SafeAreaView>
   );
 };

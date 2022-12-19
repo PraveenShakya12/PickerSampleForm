@@ -1,15 +1,15 @@
 import React from 'react';
-import {Text, View, SafeAreaView} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 const SubmitBtn = props => {
-  const name = props.name;
+  const {name, onPress} = props;
   return (
-    <SafeAreaView>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.btnArea}>
         <Text style={styles.txtStyle}>{name}</Text>
       </View>
-    </SafeAreaView>
+    </TouchableOpacity>
   );
 };
 

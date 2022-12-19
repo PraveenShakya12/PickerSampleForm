@@ -9,11 +9,17 @@ const styles = StyleSheet.create({
   },
   textInputStyle: {
     paddingVertical: 15,
-    borderWidth: 1,
-    borderColor: 'lightgray',
     borderRadius: 5,
     paddingHorizontal: 10,
     backgroundColor: colors.white,
+  },
+  textBorder: {
+    borderWidth: 1,
+    borderColor: 'lightgray',
+  },
+  textBorderWarning: {
+    borderWidth: 1,
+    borderColor: 'red',
   },
   warrningTxt: {
     fontSize: 12,

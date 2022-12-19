@@ -11,10 +11,10 @@ import {
   UserLastName,
   UserCompanyName,
   UserJobTitle,
-  IsModalOpen
+  IsModalOpen,
 } from '../../redux/action/action';
 
-const DataModal = (props) => {
+const DataModal = props => {
   const ResetScreens = props.ResetScreens;
 
   const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const DataModal = (props) => {
     dispatch(UserCompanyName(''));
     dispatch(UserJobTitle(''));
     dispatch(IsModalOpen(!modalOpen));
+    ResetScreens();
   };
 
   return (
@@ -49,28 +50,22 @@ const DataModal = (props) => {
           <Text style={styles.heading}>Data</Text>
 
           <View style={styles.txtBlock}>
-            <Text style={styles.userDetails}>
-              Product :- {DevelopmentNiches}
-            </Text>
-            <Text style={styles.userDetails}>
-              Department :- {DepartmentNiches}
-            </Text>
-            <Text style={styles.userDetails}>Email :- {Email}</Text>
-            <Text style={styles.userDetails}>Phone :- {Phone}</Text>
-            <Text style={styles.userDetails}>
+            <Text>Product :- {DevelopmentNiches}</Text>
+            <Text>Department :- {DepartmentNiches}</Text>
+            <Text>Email :- {Email}</Text>
+            <Text>Phone :- {Phone}</Text>
+            <Text>
               Name :- {FirstName} {LastName}
             </Text>
-            <Text style={styles.userDetails}>
-              Company Name :- {CompanyName}
-            </Text>
-            <Text style={styles.userDetails}>Job Title :- {jobTitle}</Text>
+            <Text>Company Name :- {CompanyName}</Text>
+            <Text>Job Title :- {jobTitle}</Text>
           </View>
 
           <TouchableOpacity
             onPress={() => {
               ResetData();
-              ResetScreens();
-              }}>
+              // ResetScreens();
+            }}>
             <Text style={styles.closeBtn}>CLOSE</Text>
           </TouchableOpacity>
         </View>

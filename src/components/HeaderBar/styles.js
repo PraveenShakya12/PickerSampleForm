@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   constainer: {
@@ -16,9 +17,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   cancelImgStyle: {
-    width: 25,
-    height: 25,
+    width: 12,
+    height: 12,
     resizeMode: 'contain',
+    marginTop: 5,
   },
   bar: {
     width: '92%',
@@ -26,7 +28,27 @@ const styles = StyleSheet.create({
     marginVertical: 35,
     marginHorizontal: '4%',
     borderRadius: 4,
-    backgroundColor: 'lightgreen',
+    backgroundColor: colors.progressBarL,
+  },
+  progressiveBar: {
+    height: '100%', 
+    borderRadius: 4, 
+    backgroundColor: colors.progressBarD
+  },
+  progressiveBarDev: {
+    width: '0%', 
+  },
+  progressiveBarDep: {
+    width: '20%', 
+  },
+  progressiveBarAuth: {
+    width: '40%', 
+  },
+  progressiveBarDeta: {
+    width: '60%', 
+  },
+  progressiveBarProf: {
+    width: '80%', 
   },
 });
 

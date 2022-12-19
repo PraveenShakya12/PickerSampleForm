@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   txtBlock: {
     marginBottom: 70,
   },
-  userDetails: {},
   closeBtn: {
     color: colors.primary,
     fontWeight: '600',

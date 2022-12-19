@@ -2,10 +2,10 @@ import {StyleSheet} from 'react-native';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
-  constainer: {
+  container: {
     marginHorizontal: '20%',
     marginVertical: 10,
-    borderWidth: 1,
+    borderRadius: 20,
   },
   txtStyle: {
     color: colors.white,
