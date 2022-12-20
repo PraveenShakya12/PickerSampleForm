@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import Fonts from '../../fonts';
 
 const styles = StyleSheet.create({
   constainer: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   txtStyle: {
-    fontSize: 16,
+    fontSize: Fonts.fontSize_12_5,
     lineHeight: 30,
   },
 });

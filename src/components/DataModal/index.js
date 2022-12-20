@@ -40,7 +40,7 @@ const DataModal = props => {
     dispatch(UserCompanyName(''));
     dispatch(UserJobTitle(''));
     dispatch(IsModalOpen(!modalOpen));
-    ResetScreens();
+    // ResetScreens();
   };
 
   return (

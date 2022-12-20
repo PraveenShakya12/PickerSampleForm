@@ -44,3 +44,4 @@ export const IsModalOpen = val => ({
   type: ActionTypes.IS_MODAL_OPEN,
   payload: val,
 });
+

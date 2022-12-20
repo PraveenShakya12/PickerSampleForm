@@ -1,12 +1,13 @@
 import React from 'react';
 import {Text, View, TextInput} from 'react-native';
+import {TextInput as PaperTextInput} from 'react-native-paper';
 import styles from './styles';
 
 const TextFields = props => {
   const {placeholder, warrning, defaultValue} = props;
   return (
-    <View>
-      <View style={styles.constainer}>
+    <View style={styles.containerPaper}>
+      {/* <View style={styles.constainer}>
         <TextInput
           style={[
             styles.textInputStyle,
@@ -21,7 +22,20 @@ const TextFields = props => {
           defaultValue={defaultValue}
         />
       </View>
-      <Text style={styles.warrningTxt}>{warrning}</Text>
+      <Text style={styles.warrningTxt}>{warrning}</Text> */}
+
+      <PaperTextInput
+        {...props}
+        style={[styles.textInputStylePaper,
+        ]}
+        label={placeholder}
+        mode="outlined"
+        defaultValue={defaultValue}
+        // outlineColor={'red'}
+        // activeOutlineColor={'red'}
+        // selectionColor={'red'}
+      />
+      <Text style={styles.warrningTxtPaper}>{warrning}</Text>
     </View>
   );
 };
